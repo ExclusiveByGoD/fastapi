@@ -1,0 +1,225 @@
+{
+    "info": {
+      "_postman_id": "38570944-fntj-3857-sngh-09273734ckjr",
+      "name": "FastAPI Final Project",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Test GET /sum1n",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8000/sum1n/10",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "sum1n",
+              "10"
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status code is 200', function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test('Response contains correct sum', function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.result).to.eql(55);",
+                "});"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Test GET /fibo",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8000/fibo?n=5",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "fibo"
+            ],
+            "query": [
+              {
+                "key": "n",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status code is 200', function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test('Response contains correct Fibonacci number', function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.result).to.eql(3);",
+                "});"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Test POST /reverse",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "string",
+              "value": "hello"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:8000/reverse",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "reverse"
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status code is 200', function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test('Response contains reversed string', function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.result).to.eql('olleh');",
+                "});"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Test PUT /list",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"element\":\"Apple\"}"
+          },
+          "url": {
+            "raw": "http://localhost:8000/list",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "list"
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status code is 200', function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test('Response contains updated list', function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.result).to.eql(['Apple']);",
+                "});"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Test POST /calculator",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"expr\":\"1,+,1\"}"
+          },
+          "url": {
+            "raw": "http://localhost:8000/calculator",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "calculator"
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test('Status code is 200', function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test('Response contains correct calculation', function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.result).to.eql(2);",
+                "});"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
